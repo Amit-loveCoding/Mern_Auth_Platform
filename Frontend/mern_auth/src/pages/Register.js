@@ -1,18 +1,15 @@
 import React from "react";
 import UserForm from "../components/UserForm";
 import { useNavigate } from "react-router-dom";
+import { register } from "../services/api";  
 
 const Register = () => {
     const navigate = useNavigate(); 
 
     const handleRegister = async (formData) => {
         try {
-            const response = await fetch("https://mern-auth-platform-3.onrender.com/api/auth/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
-            const data = await response.json();
+            const response = await register(formData);  
+            const data = response.data;
             if (data.token) {
                 localStorage.setItem("token", data.token);
                 navigate("/admin"); // Navigate to /admin after successful registration
@@ -26,3 +23,4 @@ const Register = () => {
 };
 
 export default Register;
+
