@@ -9,6 +9,8 @@ API.interceptors.request.use((config) => {
 });
 
 export const login = (credentials) => API.post("/auth/login", credentials);
+export const register = (formData) => API.post("/auth/register", formData);  // Add this register function
 export const fetchUsers = () => API.get("/admin/users");
 export const addUser = (userData) => API.post("/admin/add-user", userData);
 export const deleteUser = (userId) => API.delete(`/admin/delete-user/${userId}`);
+
