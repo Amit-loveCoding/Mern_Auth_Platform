@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const navigate = useNavigate(); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -12,8 +13,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const navigate = useNavigate(); 
-    
+
         try {
             const { data } = await login(formData);
             localStorage.setItem("token", data.token);
@@ -27,11 +27,23 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Email:</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                <input 
+                    type="email" 
+                    name="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    required 
+                />
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+                <input 
+                    type="password" 
+                    name="password" 
+                    value={formData.password} 
+                    onChange={handleChange} 
+                    required 
+                />
             </div>
             <button type="submit">Login</button>
         </form>
