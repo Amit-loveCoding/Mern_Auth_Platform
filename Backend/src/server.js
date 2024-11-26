@@ -7,8 +7,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 // Import routes
-import authRouter from './src/routes/authRoutes.js';
-import adminRouter from './src/routes/adminRoutes.js';
+import authRouter from './routes/authRoutes.js';
+import adminRouter from './routes/adminRoutes.js';
 
 const url = process.env.MONGO_URI;
 
